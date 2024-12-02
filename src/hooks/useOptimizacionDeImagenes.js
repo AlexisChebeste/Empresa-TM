@@ -14,7 +14,7 @@ export function useOptimizedImage(src, sizes = '100vw') {
   }, [src]);
 
   const generateSrcSet = () => {
-    // Generate multiple sizes for different screen widths
+    
     return `
       ${src}?w=480 480w,
       ${src}?w=768 768w,

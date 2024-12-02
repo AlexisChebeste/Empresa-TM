@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { API_ROUTES, fetchData } from '../src_config_api';
 import Separacion from "../components/Separacion";
-import { useCarrito } from "../components/useCarrito";
+import { useCarrito } from "../components/Carrito/useCarrito";
 import DetalleItem from '../components/DetalleItem';
 import ErrorComponent from '../components/ErrorComponent';
 import { CircleMinus, CirclePlus } from 'lucide-react';

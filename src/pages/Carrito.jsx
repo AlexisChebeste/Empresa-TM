@@ -1,5 +1,5 @@
 import SectionContainer from '../components/SectionContainer';
-import { useCarrito } from '../components/useCarrito';
+import { useCarrito } from '../components/Carrito/useCarrito';
 import { CircleMinus, CirclePlus } from 'lucide-react';
 
 export default function Carrito() {

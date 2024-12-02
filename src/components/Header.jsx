@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef} from "react";
 import { Link } from "react-router-dom";
 import SectionContainer from "./SectionContainer";
-import CarritoHeader from "./CarritoHeader";
+import CarritoHeader from "./Carrito/CarritoHeader";
 import { Menu, X } from 'lucide-react';
 
 function Header() {
@@ -24,6 +24,14 @@ function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [menuRef]);
+
+  const menuItems = [
+    { to: "/", label: "Inicio" },
+    { to: "/catalogo", label: "Catálogo" },
+    { to: "/fabricantes", label: "Fabricantes" },
+    { to: "/componentes", label: "Componentes" },
+  ];
+
   return (
     <header className="relative w-full border-b border-orange-500">
       <SectionContainer className="flex justify-between items-center">
@@ -31,13 +39,15 @@ function Header() {
           <img src="/images/logo.png" alt="Logo de TechMakers" width={48}/>
         </Link>
         <nav className=" hidden md:flex gap-16 my-auto text-2xl font-normal text-gray-600">
-          <Link to="/" className="hover:text-orange-500">Inicio</Link>
-          <Link to="/catalogo " className="hover:text-orange-500">Catálogo</Link>
-          <Link to="/fabricantes" className="hover:text-orange-500">Fabricantes</Link>
+          {menuItems.map((item) => (
+            <Link key={item.to} to={item.to} className="hover:text-orange-500">
+              {item.label}
+            </Link>
+          ))}
         </nav>
-        <div className="md:hidden relative" ref={menuRef}>
+        <div className="md:hidden" ref={menuRef}>
           <button
-              className="text-gray-600 hover:text-gray-900"
+              className="text-gray-600 hover:text-gray-900 z-20 relative"
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
@@ -47,12 +57,23 @@ function Header() {
           </button>
           
           {isMenuOpen && (
-            <nav id="mobile-menu" className="absolute -left-20 mt-2 w-48 bg-gray-100 rounded-md shadow-lg py-1 z-50">
-              <Link to="/" className="block px-4 py-2 text-center text-lg text-gray-700 hover:bg-gray-100" onClick={toggleMenu}>Inicio</Link>
-              <Link to="/catalogo " className="block px-4 py-2 text-center  text-lg text-gray-700 hover:bg-gray-100" onClick={toggleMenu}>Catálogo</Link>
-              <Link to="/fabricantes" className="block px-4 py-2 text-center  text-lg text-gray-700 hover:bg-gray-100" onClick={toggleMenu}>Fabricantes</Link>
-            </nav>
-          )}
+            <nav 
+            id="mobile-menu" 
+            className="fixed inset-0 bg-white z-10 pt-16 flex flex-col items-center justify-center"
+            aria-label="Menú móvil"
+          >
+            {menuItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="block py-4 text-2xl text-gray-700 hover:text-orange-500 transition-colors duration-200"
+                onClick={toggleMenu}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        )}
         </div>
         <CarritoHeader />
         

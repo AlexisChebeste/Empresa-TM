@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useOptimizedImage } from '../hooks/useOptimizacionDeImagenes';
+import { useOptimizedImage } from '../../hooks/useOptimizacionDeImagenes';
 
 
 function Elemento({ elemento, tipo}) {

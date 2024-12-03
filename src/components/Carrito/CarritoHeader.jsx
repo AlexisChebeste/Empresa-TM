@@ -48,7 +48,7 @@ function CarritoHeader() {
                   {carrito.map((item) => (
                     <li key={item.id} className="flex justify-between items-center py-2">
                       <div className="flex items-center">
-                        <img src={`/${item.pathImg}`} alt={item.nombre} className="w-10 h-10 object-cover rounded mr-2" />
+                        <img src={item.pathImg} alt={item.nombre} className="w-10 h-10 object-contain rounded mr-2" />
                         <div>
                           <p className="text-sm font-medium">{item.nombre}</p>
                           <p className="text-xs text-gray-500">${item.precio.toFixed(2)} x {item.cantidad}</p>

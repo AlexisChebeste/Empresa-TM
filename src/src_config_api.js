@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://empresa-tm-backend-production.up.railway.app';
 
 export const API_ROUTES = {
   productos: `${API_BASE_URL}/productos`,
